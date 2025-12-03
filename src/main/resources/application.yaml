@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: employee-management
+  datasource:
+    url: jdbc:postgresql://localhost:5432/collegemis_bb
+    username: postgres
+    password: sarthak
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update # Options: update, create, validate, none
+    show-sql: true # Displays SQL queries to the console
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+#      my sql
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/mydatabase
+#    username: user
+#    password: password
+#    jpa:
+#      hibernate:
+#        ddl-auto: update
