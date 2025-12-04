@@ -1,11 +1,13 @@
 package in.binarybrains.employee_management.controller;
 
+import in.binarybrains.employee_management.dto.ApiResponseDTO;
 import in.binarybrains.employee_management.model.Studentsss;
 import in.binarybrains.employee_management.repository.StudentsssRepo;
 import in.binarybrains.employee_management.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -51,5 +53,20 @@ public class StudentController {
         else{
             return  ResponseEntity.ok(student);
         }
+    }
+
+    @GetMapping("/get-all-student")
+    ResponseEntity<ApiResponseDTO<List<Studentsss>>> findAllStudentData(){
+        List<Studentsss> studentsssList = studentService.findAllStudentData();
+//        if(studentsssList.isEmpty())
+//        {
+            ResponseEntity res = new ResponseEntity(ApiResponseDTO.builder().message("unable to find any data").code(HttpStatus.NOT_FOUND).Data(null).build(), HttpStatus.NOT_FOUND);
+            return  res;
+//        }
+//        else{
+//            ApiResponseDTO responseDTO = ApiResponseDTO.builder().message("Data fetch successfully").code(HttpStatus.OK).Data(studentsssList).build();
+////            ApiResponseDTO<List<Studentsss>> responseDTO1 = new ApiResponseDTO("" , null, null);
+//            return  ResponseEntity.ok(responseDTO);
+//        }
     }
 }

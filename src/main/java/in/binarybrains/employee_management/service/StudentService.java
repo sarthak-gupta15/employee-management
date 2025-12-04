@@ -7,4 +7,5 @@ import java.util.List;
 public interface StudentService {
     Studentsss findStudentBy(Integer id);
     List<Studentsss> findStudentByName(String name);
+    List<Studentsss> findAllStudentData();
 }
